@@ -21,11 +21,11 @@
               border: "3px red solid"
             });
             
-            $.each(input, function(key, val) {
-                console.log(key,val);
+            $.each(input, function(key, item) {
+                console.log(item);
             });
         }
-    </script>
+    </script> 
 </head>
 <body onload="loadMap()">
     <h2>Démo géocodage en masse Nominatim - OSM - JQuery</h2>
@@ -36,6 +36,7 @@
             Adresse 2 : <input type="text" name="adresse2" id="adresse2" value="Etrechy France" /> <br />
             Adresse 3 : <input type="text" name="adresse3" id="adresse3" value="Marseille France" /> <br />
             Adresse 4 : <input type="text" name="adresse4" id="adresse4" value="Lyon France" /> <br />
+            
             <button onclick="geocode(); return false;">Valider</button>
         </form>
     </fieldset>
