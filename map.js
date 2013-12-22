@@ -1,5 +1,15 @@
+/**
+ * For global accession
+ */
+
 var map;
 var marker;
+
+
+/**
+ * Loading map after dom ready
+ */
+
 function loadMap() {
   	map = new L.Map('map', {zoomControl: true});
 
@@ -11,40 +21,37 @@ function loadMap() {
 
 }
 
+/**
+ * Geocoding
+ * Takes adress from form
+ * Get json
+ * Display location on map
+ */
+
 function geocode() {
 	address = $('#adresse').val();
 	
-	console.log($('#result').html('coucou'));
-	
 	$.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=1&polygon_geojson=1&q=' + address, function(datas) {
 
-	
-	console.log(datas);
-	
 	data = datas[0];
-	console.log(data);
 	
 	$('#result').empty();
 	
     $('<p>', { html: data.display_name }).appendTo('#result');
     
-    lat = data.lat;
-    lon = data.lon;
-
     if (marker) {
     	map.removeLayer(marker);
     	map.removeLayer(polygon);
     }
     
-    map.setView([lat, lon]);
+    map.setView([data.lat, data.lon]);
     
     map.fitBounds([
 	    [data.boundingbox[0], data.boundingbox[2]],
 	    [data.boundingbox[1], data.boundingbox[3]]
 	]);
-
 	
-	marker = L.marker([lat, lon]).addTo(map).bindPopup(data.display_name).openPopup();
+	marker = L.marker([data.lat, data.lon]).addTo(map).bindPopup(data.display_name).openPopup();
 
 	polygon = L.geoJson(data.geojson).addTo(map);
 	
