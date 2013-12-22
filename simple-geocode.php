@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="<?php echo $leafLetCSS;?>" />
     <script src="<?php echo $leafLetJS ;?>"></script>
     <script src="<?php echo $jquery ;?>"></script>
-    <script src="map.js"></script>
+    <script src="./js/map.js"></script>
 </head>
 <body onload="loadMap()">
     <h2>Démo géocodage Nominatim - OSM - JQuery</h2>
