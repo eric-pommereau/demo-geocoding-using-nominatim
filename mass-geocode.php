@@ -32,12 +32,20 @@
     <fieldset>
         <legend>Géocodage en masse</legend>
         <form name="adresses">
-            Adresse 1 : <input type="text" name="adresse1" id="adresse1" value="Paris France" /> <br />
-            Adresse 2 : <input type="text" name="adresse2" id="adresse2" value="Etrechy France" /> <br />
-            Adresse 3 : <input type="text" name="adresse3" id="adresse3" value="Marseille France" /> <br />
-            Adresse 4 : <input type="text" name="adresse4" id="adresse4" value="Lyon France" /> <br />
+            <div class="frm-adress" >
+                Adresse 1 : <input type="text" name="adresse1" id="adresse1" value="Paris France" /> <br />    
+            </div>
+            <div class="frm-adress">
+                Adresse 2 : <input type="text" name="adresse2" id="adresse2" value="Etrechy France" /> <br />
+            </div>
+            <div class="frm-adress">
+                Adresse 3 : <input type="text" name="adresse3" id="adresse3" value="Marseille France" /> <br />
+            </div>
+            <div class="frm-adress">
+                Adresse 4 : <input type="text" name="adresse4" id="adresse4" value="Lyon France" /> <br />
+            </div>
             
-            <button onclick="geocode(); return false;">Valider</button>
+            <button onclick="doMassGeocoding(); return false;">Valider</button>
         </form>
     </fieldset>
     
