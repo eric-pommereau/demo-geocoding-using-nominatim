@@ -43,7 +43,9 @@ function massGeocode(addressList) {
 	ctrAddress = addressList.length;
 	
 	if(featureGroup !== null) {
-	    featureGroup.clearLayers();
+	    featureGroup.eachLayer(function(layer){
+            featureGroup.removeLayer(layer);
+        });
 	};
 	
 	$.each(addressList, function(key, item) {		
