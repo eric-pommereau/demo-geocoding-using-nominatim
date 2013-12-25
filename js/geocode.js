@@ -1,40 +1,45 @@
 /**
- * For global accession
+ * For global accessing
  */
 
 var map;
 var marker;
 var featureGroup = null;
 var ctrAddress = 0;
-var aPlaces = [];
+
 /**
  * Loading map after dom ready
  */
 
-function loadMap() {
+function loadMap(latLngZoom) {
   	map = new L.Map('map', {zoomControl: true});
-	http://a.tile.openstreetmap.fr/
+	
   	var osmUrl = 'http://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
     	osmAttribution = 'Map data &copy; 2012 <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
     	osm = new L.TileLayer(osmUrl, {maxZoom: 18, attribution: osmAttribution});
 
-	map.setView(new L.LatLng(48.4930895, 2.1909175), 16).addLayer(osm);
+	map.setView(new L.LatLng(latLngZoom.lat, latLngZoom.lng), latLngZoom.zoom).addLayer(osm);
 
 }
+/**
+ * Called after button click
+ */
 
 function doMassGeocoding() {
 
-	var input = $("form .frm-adress input" ).css({
-		background: "yellow",
-		border: "3px red solid"
-	});
-		
+    // list all input 
+	var inputList = $("form .frm-adress input" );
+	// Init adresses (value and div ID)
 	var aAddresses = [];
 	
-	$.each(input, function(key, item) {
+	$.each(inputList, function(key, item) {
 	  	aAddresses.push({'address': item.value, 'inputId': item.id});
+	  	$('#'+item.id).css({
+            border: '3px solid grey'
+        });
 	});
 	
+	// launching mass geocode ----
 	massGeocode(aAddresses);
 }
 
@@ -43,15 +48,36 @@ function massGeocode(addressList) {
 	ctrAddress = addressList.length;
 	
 	if(featureGroup !== null) {
-	    featureGroup.eachLayer(function(layer){
-            featureGroup.removeLayer(layer);
+	    // 
+	    featureGroup.eachLayer(function(l) {
+	        console.log(l);
+	        featureGroup.removeLayer(l); 
         });
+        featureGroup.clearLayers();
+        featureGroup = null;
 	};
-	
+    
+    
+    var aPlaces = [];
+    	
 	$.each(addressList, function(key, item) {		
 	  	$.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=1&polygon_geojson=1&q=' + item.address, function(datas) {
-	  		data = datas[0];
-			var markerPlace = L.marker([data.lat, data.lon]).bindPopup(data.display_name);
+
+            data = datas[0];
+	  		
+            if(data === undefined) {
+                $("form #" + item.inputId).css({
+                    border: '3px solid red'
+                });
+                ctrAddress--;
+                return 0;
+            }
+            
+            $("form #" + item.inputId).css({
+                border: '3px solid green'
+            });
+
+			var markerPlace = L.marker([data.lat, data.lon], {draggable:true}).bindPopup(data.display_name);
 			aPlaces.push(markerPlace);
 			ctrAddress--;
 			
@@ -61,6 +87,7 @@ function massGeocode(addressList) {
 			}
 		});
 	});
+	
 	
 	
 }
