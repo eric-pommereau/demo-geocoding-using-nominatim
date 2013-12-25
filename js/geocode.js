@@ -29,6 +29,7 @@ function doMassGeocoding() {
 
     // list all input 
 	var inputList = $("form .frm-adress input" );
+	
 	// Init adresses (value and div ID)
 	var aAddresses = [];
 	
@@ -43,20 +44,17 @@ function doMassGeocoding() {
 	massGeocode(aAddresses);
 }
 
-
+/**
+ * Process each idem from addressList array({'address': item.value, 'inputId': item.id})
+ */
 function massGeocode(addressList) {
 	ctrAddress = addressList.length;
 	
 	if(featureGroup !== null) {
-	    // 
 	    featureGroup.eachLayer(function(l) {
-	        console.log(l);
-	        featureGroup.removeLayer(l); 
+            featureGroup.clearLayers(); 
         });
-        featureGroup.clearLayers();
-        featureGroup = null;
 	};
-    
     
     var aPlaces = [];
     	
@@ -77,7 +75,7 @@ function massGeocode(addressList) {
                 border: '3px solid green'
             });
 
-			var markerPlace = L.marker([data.lat, data.lon], {draggable:true}).bindPopup(data.display_name);
+			var markerPlace = L.marker([data.lat, data.lon]).bindPopup(data.display_name);
 			aPlaces.push(markerPlace);
 			ctrAddress--;
 			
@@ -86,10 +84,7 @@ function massGeocode(addressList) {
 				map.fitBounds(featureGroup.getBounds());
 			}
 		});
-	});
-	
-	
-	
+	});	
 }
 
 
