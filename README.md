@@ -28,3 +28,4 @@ Geododing some addresses and display locations on map
 
 ## Enhancements 
 - OOP (JQuery or Leaflet class ??).
+-
