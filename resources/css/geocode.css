@@ -1,0 +1,31 @@
+
+body {
+  margin: 20px;
+  border:1px solid black;
+}
+
+.info {
+	margin: 20px;
+	text-align:center;
+	background-color:#E0F2F7;
+	border:1px solid blue;
+}
+.geocode-line {
+	margin : 10px;
+	padding : 10px;
+}
+
+.success {
+	background-color:#D8F6CE;
+	border:1px solid green;
+}
+
+.error {
+	background-color:#F6CECE;
+	border:1px solid red;
+}
+
+.result {
+	margin: 20px;
+	text-align:center;
+}
