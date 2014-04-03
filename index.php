@@ -41,6 +41,10 @@
             <input type="file" name="csv" />
             <input type="submit">
         </form>
+        <br />
+        <div>
+            Télécharger un fichier exemple : <a href="php/addresses.csv">ici</a>
+        </div>
     </fieldset>    
 </body>
 </html>
