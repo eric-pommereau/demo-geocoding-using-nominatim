@@ -34,6 +34,8 @@ Geododing some addresses in CSV file
 - Output each geododed lines
 - Create 2 files : done.csv and reject.csv (and original file)
 
+Le répertoire php/uload doit être accessible en écriture par www-data
+
 
 ## Enhancements 
 - OOP (JQuery or Leaflet class ??).
