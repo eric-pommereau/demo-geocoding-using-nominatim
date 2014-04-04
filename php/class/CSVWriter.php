@@ -20,7 +20,7 @@
         }
         
         public function addLine($aLine) {
-            // Contrôler le nombre d'éléments
+            // ContrÃ´ler le nombre d'Ã©lÃ©ments
             $this->aLines[] = $aLine;
         }
         

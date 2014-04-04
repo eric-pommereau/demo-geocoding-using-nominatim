@@ -59,8 +59,8 @@
         $oCSVwriterReject->write(); 
     
         printf('<div class="result">Fichier original : <a href="php/upload/%s/1-input.csv">1-input.csv</a></div>', session_id());
-        printf('<div class="result">Réussis : <a href="php/upload/%s/1-done.csv">1-done.csv</a></div>', session_id());
-        printf('<div class="result">Echoués : <a href="php/upload/%s/1-reject.csv">1-reject.csv</a></div>', session_id());
+        printf('<div class="result">Réussis : <a href="php/upload/%s/1-done.csv">2-done.csv</a></div>', session_id());
+        printf('<div class="result">Echoués : <a href="php/upload/%s/1-reject.csv">3-reject.csv</a></div>', session_id());
                 
     }catch (Exception $ex) {
         echo $ex->getMessage();
