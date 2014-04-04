@@ -3,10 +3,12 @@ Demo geocoding : Nominatim/Leaflet/JQuery
 
 Demo source code for geocoding with nominatim usin leaftlet and jQuery Libraries
 
-Two main files
+Three main files
 
 - simple-geocode.php
 - mass-geocode.php
+- mass-geocode-csv.php
+
 
 ##Simple Geocode
 
