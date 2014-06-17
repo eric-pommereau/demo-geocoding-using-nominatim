@@ -43,7 +43,7 @@
         </form>
         <br />
         <div>
-            Télécharger un fichier exemple : <a href="php/addresses.csv">ici</a>
+            Télécharger un fichier exemple : <a href="resources/sample/addresses.csv">ici</a>
         </div>
     </fieldset>    
 </body>

@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="<?php echo $leafLetCSS;?>" />
     <script src="<?php echo $leafLetJS ;?>"></script>
     <script src="<?php echo $jquery ;?>"></script>
-    <script src="./js/geocode.js"></script>
+    <script src="./resources/js/geocode.js"></script>
     <script>
         function init() {
             loadMap({
